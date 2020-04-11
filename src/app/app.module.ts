@@ -7,7 +7,7 @@ import { DragDropDirective } from './drag-n-drop.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCardModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { NgxSpinnerModule } from 'ngx-spinner';
+import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 
 @NgModule({
   declarations: [AppComponent, DragDropDirective],
@@ -20,7 +20,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     FlexLayoutModule,
     NgxSpinnerModule,
   ],
-  providers: [],
+  providers: [NgxSpinnerService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

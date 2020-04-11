@@ -8,11 +8,15 @@
     <div appDragDrop class="uploadfilecontainer" (click)="fileInput.click()" (onFileDropped)="uploadFile($event)">
       <input hidden #fileInput type="file" [accept]="fileTypes.join(',')" (change)="uploadFile($event.target.files)" />
       <div class="drag-drop-content">
-        <img src="/assets/cloud.png" />
+        <img src="assets/cloud.png" />
         <p class="file-upload-text">Upload X-Ray image here</p>
       </div>
     </div>
   </div>
+  <!--
+  <div>
+    <canvas width="224" height="224"></canvas>
+  </div> -->
 
   <div *ngIf="uploadedFile" fxLayout="row wrap" fxLayoutAlign="space-around stretch" fxLayoutGap="10px grid">
     <div class="uploaded-image-area" fxFlex="32" fxFlex.xs="100">
@@ -28,9 +32,9 @@
       <mat-card *ngIf="result">
         <mat-card-title>Result</mat-card-title>
         <mat-card-content>
-          <p><span class="label">COVID-19: </span> 70%</p>
-          <p><span class="label">Pneumonia: </span> 32%</p>
-          <p><span class="label">Negative: </span> 55%</p>
+          <p><span class="label">COVID-19: </span> {{ result[2] }}%</p>
+          <p><span class="label">Pneumonia: </span> {{ result[1] }}%</p>
+          <p><span class="label">Normal: </span> {{ result[0] }}%</p>
         </mat-card-content>
       </mat-card>
     </div>
@@ -46,4 +50,4 @@
   </div>
 </div>
 
-<ngx-spinner size="medium" type="ball-clip-rotate-pulse">Analyzing...</ngx-spinner>
+<ngx-spinner size="medium" type="ball-clip-rotate-pulse">{{ loadingText }}</ngx-spinner>
