@@ -3,7 +3,7 @@
   <h2>Upload your X-Ray image to detect COVID-19</h2>
 </div>
 
-<div class="container">
+<div *ngIf="model" class="container">
   <div class="file-upload-area">
     <div appDragDrop class="uploadfilecontainer" (click)="fileInput.click()" (onFileDropped)="uploadFile($event)">
       <input hidden #fileInput type="file" [accept]="fileTypes.join(',')" (change)="uploadFile($event.target.files)" />

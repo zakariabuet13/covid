@@ -19,13 +19,16 @@ export class AppComponent implements OnInit {
   resultImgURL: any;
 
   model: tf.LayersModel;
-
   predictWorker: Worker;
-  subject: Subject<any>;
 
   constructor(private spinner: NgxSpinnerService) {}
 
   ngOnInit() {
+    this.initializePredictWorker();
+    this.loadModel();
+  }
+
+  initializePredictWorker() {
     if (typeof Worker !== 'undefined') {
       // Create a new
       this.predictWorker = new Worker('assets/predict-worker.worker.js');
@@ -39,7 +42,9 @@ export class AppComponent implements OnInit {
     } else {
       alert('Your browser needs to be updated to run this application properly.');
     }
+  }
 
+  loadModel() {
     this.loadingText = 'Setting up...';
     this.spinner.show();
     tf.loadLayersModel('assets/trained/model.json')
@@ -47,8 +52,10 @@ export class AppComponent implements OnInit {
         this.spinner.hide();
         this.model = model;
       })
-      .catch(() => {
+      .catch((err) => {
         this.spinner.hide();
+        console.log(err);
+        alert('Could not load resources properly');
       });
   }
 
