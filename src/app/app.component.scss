@@ -1,112 +1,39 @@
-.page-header {
-  margin: 30px 10px;
-  text-align: center;
+.nav {
+  padding: 0 20px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 
-  h1,
-  h2 {
-    font-weight: 500;
-  }
-}
-
-.container {
-  margin: 20px;
-
-  .file-upload-area {
-    margin-bottom: 50px;
-  }
-
-  .mat-card {
-    // height: calc(100% - 32px);
-
-    &:not([class*='mat-elevation-z']) {
-      box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.6);
-    }
-
-    .mat-card-title {
-      font-size: 18px;
-    }
-
-    .mat-card-content {
-      padding: 20px 0 0;
-    }
-  }
-
-  .uploadfilecontainer {
-    border: 2px dashed #1c8adb;
-    border-radius: 10px;
+  .nav-content {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    height: 250px;
-    width: 80%;
-
-    .drag-drop-content {
-      margin: auto;
-      text-align: center;
-
-      img {
-        width: 100px;
-      }
-
-      .file-upload-text {
-        font-size: 20px;
-      }
-    }
+    margin: auto;
+    max-width: 980px;
+    width: 100%;
   }
 
-  .uploadfilecontainer:hover {
+  .fill-remaining-space {
+    flex: 1 1 auto;
+  }
+
+  .menu-item {
+    border-bottom: 2px solid transparent;
     cursor: pointer;
-    background-color: #cbe9f6 !important;
-    opacity: 0.8;
-  }
+    color: #eee;
+    font-size: 18px;
 
-  .uploaded-image-area {
-    .preview-image {
-      border: 1px solid #ddd;
-      display: block;
-      margin: 0 auto;
-      margin-bottom: 10px;
-      padding: 10px;
-      width: calc(100% - 20px);
+    & + .menu-item {
+      margin-left: 15px;
     }
-  }
 
-  .result-area {
-    .label {
-      display: inline-block;
-      font-weight: bold;
-      width: 150px;
-    }
-  }
-
-  .result-image-area {
-    .preview-image {
-      border: 1px solid #ddd;
-      display: block;
-      margin: 0 auto;
-      margin-bottom: 10px;
-      padding: 10px;
-      width: calc(100% - 20px);
+    &.active {
+      color: #fff;
+      border-bottom: 2px solid #fff;
     }
   }
 }
 
-ngx-spinner {
-  color: #ffffff;
-}
-
-@media only screen and (max-width: 600px) {
-  .page-header {
-    h1 {
-      font-size: 26px;
-    }
-    h2 {
-      font-size: 22px;
-    }
-  }
-
-  .container .uploadfilecontainer {
-    width: auto;
-  }
+.wrapper {
+  margin: auto;
+  max-width: 980px;
+  padding: 30px 20px 10px;
 }

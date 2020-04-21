@@ -1,0 +1,61 @@
+<div class="home-page">
+  <div class="page-header">
+    <h1>Detect COVID-19 in seconds!</h1>
+    <h2>Upload your X-Ray image to detect COVID-19</h2>
+  </div>
+
+  <div *ngIf="model" class="container">
+    <div class="file-upload-area">
+      <div appDragDrop class="uploadfilecontainer" (click)="fileInput.click()" (onFileDropped)="uploadFile($event)">
+        <input
+          hidden
+          #fileInput
+          type="file"
+          [accept]="fileTypes.join(',')"
+          (change)="uploadFile($event.target.files)"
+        />
+        <div class="drag-drop-content">
+          <img src="assets/cloud.png" />
+          <p class="file-upload-text">Upload X-Ray image here</p>
+        </div>
+      </div>
+    </div>
+    <!--
+  <div>
+    <canvas width="224" height="224"></canvas>
+  </div> -->
+
+    <div *ngIf="uploadedFile" fxLayout="row wrap" fxLayoutAlign="space-around stretch" fxLayoutGap="10px grid">
+      <div class="uploaded-image-area" fxFlex="32" fxFlex.xs="100">
+        <mat-card>
+          <mat-card-title>Test image</mat-card-title>
+          <mat-card-content>
+            <img class="preview-image" [src]="imgURL" *ngIf="imgURL" />
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="result-area" fxFlex="32" fxFlex.xs="100">
+        <mat-card *ngIf="result">
+          <mat-card-title>Result</mat-card-title>
+          <mat-card-content>
+            <p><span class="label">COVID-19: </span> {{ result[2] }}%</p>
+            <p><span class="label">Pneumonia: </span> {{ result[1] }}%</p>
+            <p><span class="label">Normal: </span> {{ result[0] }}%</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="result-image-area" fxFlex="32" fxFlex.xs="100">
+        <mat-card *ngIf="resultImgURL">
+          <mat-card-title>Result image</mat-card-title>
+          <mat-card-content>
+            <img class="preview-image" [src]="resultImgURL" *ngIf="resultImgURL" />
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ngx-spinner size="medium" type="ball-clip-rotate-pulse">{{ loadingText }}</ngx-spinner>

@@ -1,0 +1,21 @@
+.login-form-container {
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  margin: auto;
+
+  mat-card-title {
+    text-align: center;
+  }
+
+  .login-form {
+    padding: 20px 0;
+
+    .mat-form-field {
+      width: 100%;
+    }
+
+    .submit-button {
+      width: 100%;
+    }
+  }
+}
