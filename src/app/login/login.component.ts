@@ -38,11 +38,11 @@ export class LoginComponent implements OnInit {
     this.loadingText = 'Please wait...';
     this.spinner.show();
     this.authService.login(this.loginForm.value).subscribe((response) => {
-      this.spinner.hide();
       if (response.status === 'success') {
         localStorage.setItem('token', response.token);
         this.router.navigate(['home']);
       } else {
+        this.spinner.hide();
         this.errorText = 'Something went wrong. Please try again later.';
       }
     });

@@ -9,6 +9,7 @@
     <span *ngIf="!authService.loggedIn" class="menu-item" routerLink="/signup" routerLinkActive="active">Sign Up</span>
 
     <span *ngIf="authService.loggedIn" class="menu-item" routerLink="/home" routerLinkActive="active">Home</span>
+    <span *ngIf="authService.loggedIn" class="menu-item" routerLink="/archive" routerLinkActive="active">Archive</span>
     <span *ngIf="authService.loggedIn" class="menu-item" (click)="logout()" routerLinkActive="active">Logout</span>
   </div>
 </mat-toolbar>

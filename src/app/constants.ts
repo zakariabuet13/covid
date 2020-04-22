@@ -1,6 +1,7 @@
 export class Constants {
-  static apiDev = 'localhost:3000/api/v1/';
-  static apiProd = 'https://plez-api.herokuapp.com/api/v1';
+  static apiDev = 'http://localhost:3000';
+  static apiProd = 'https://plez-api.herokuapp.com';
 
-  static apiUrl = Constants.apiProd;
+  static apiBaseUrl = Constants.apiProd;
+  static apiUrl = `${Constants.apiBaseUrl}/api/v1`;
 }

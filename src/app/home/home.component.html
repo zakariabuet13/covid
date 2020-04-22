@@ -4,7 +4,7 @@
     <h2>Upload your X-Ray image to detect COVID-19</h2>
   </div>
 
-  <div *ngIf="model" class="container">
+  <div *ngIf="modelLoaded" class="container">
     <div class="file-upload-area">
       <div appDragDrop class="uploadfilecontainer" (click)="fileInput.click()" (onFileDropped)="uploadFile($event)">
         <input
@@ -20,10 +20,6 @@
         </div>
       </div>
     </div>
-    <!--
-  <div>
-    <canvas width="224" height="224"></canvas>
-  </div> -->
 
     <div *ngIf="uploadedFile" fxLayout="row wrap" fxLayoutAlign="space-around stretch" fxLayoutGap="10px grid">
       <div class="uploaded-image-area" fxFlex="32" fxFlex.xs="100">
@@ -47,10 +43,13 @@
       </div>
 
       <div class="result-image-area" fxFlex="32" fxFlex.xs="100">
-        <mat-card *ngIf="resultImgURL">
+        <mat-card>
           <mat-card-title>Result image</mat-card-title>
           <mat-card-content>
             <img class="preview-image" [src]="resultImgURL" *ngIf="resultImgURL" />
+            <button *ngIf="!resultImgURL" mat-raised-button color="warn" (click)="loadHeatmap()">
+              Show Heatmap
+            </button>
           </mat-card-content>
         </mat-card>
       </div>

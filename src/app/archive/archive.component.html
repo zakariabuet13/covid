@@ -1,0 +1,49 @@
+<div class="archive-page">
+  <div class="container">
+    <div class="stats">
+      <p>Total tests: {{ archive.length }}</p>
+      <p>COVID-19 cases: {{ totalCovid }}</p>
+      <p>Pneumonia cases: {{ totalPneumonia }}</p>
+      <p>Normal cases: {{ archive.length - totalCovid - totalPneumonia }}</p>
+    </div>
+    <ng-container *ngFor="let test of archive; let idx = index">
+      <div class="test-result-container">
+        <div fxLayout="row wrap" fxLayoutAlign="space-around stretch" fxLayoutGap="10px grid">
+          <div class="uploaded-image-area" fxFlex="32" fxFlex.xs="100">
+            <mat-card>
+              <mat-card-title>Test image</mat-card-title>
+              <mat-card-content>
+                <img #testImage class="preview-image" src="{{ imageFolder }}{{ test.image }}" crossorigin="anonymous" />
+              </mat-card-content>
+            </mat-card>
+          </div>
+
+          <div class="result-area" fxFlex="32" fxFlex.xs="100">
+            <mat-card>
+              <mat-card-title>Result</mat-card-title>
+              <mat-card-content>
+                <p><span class="label">COVID-19: </span> {{ test.covidProbability }}%</p>
+                <p><span class="label">Pneumonia: </span> {{ test.pneumoniaProbability }}%</p>
+                <p><span class="label">Normal: </span> {{ test.normalProbability }}%</p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+
+          <div class="result-image-area" fxFlex="32" fxFlex.xs="100">
+            <mat-card>
+              <mat-card-title>Result image</mat-card-title>
+              <mat-card-content>
+                <img class="preview-image" [src]="test.resultImgURL" *ngIf="test.resultImgURL" />
+                <button *ngIf="!test.resultImgURL" mat-raised-button color="warn" (click)="loadHeatmap(testImage, idx)">
+                  Show Heatmap
+                </button>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<ngx-spinner size="medium" type="ball-clip-rotate-pulse">{{ loadingText }}</ngx-spinner>

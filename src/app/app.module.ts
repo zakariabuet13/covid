@@ -23,9 +23,11 @@ import { JwtModule, JwtHelperService } from '@auth0/angular-jwt';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 import { Constants } from './constants';
+import { TestService } from './test.service';
+import { ArchiveComponent } from './archive/archive.component';
 
 @NgModule({
-  declarations: [AppComponent, DragDropDirective, LoginComponent, SignupComponent, HomeComponent],
+  declarations: [AppComponent, DragDropDirective, LoginComponent, SignupComponent, HomeComponent, ArchiveComponent],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
@@ -43,11 +45,11 @@ import { Constants } from './constants';
       config: {
         tokenGetter: tokenGetter,
         whitelistedDomains: [Constants.apiUrl],
-        blacklistedRoutes: [`${Constants.apiUrl}/signup`, `${Constants.apiUrl}/login`],
+        blacklistedRoutes: [`${Constants.apiUrl}/user/signup`, `${Constants.apiUrl}/user/login`],
       },
     }),
   ],
-  providers: [NgxSpinnerService, AuthService, AuthGuard, JwtHelperService],
+  providers: [NgxSpinnerService, AuthService, AuthGuard, JwtHelperService, TestService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
