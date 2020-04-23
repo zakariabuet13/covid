@@ -11,7 +11,7 @@ addEventListener('message', async function (event) {
       image = event.data.data;
 
       if (!this.model) {
-        this.model = await tf.loadLayersModel('./trained/model.json');
+        this.model = await tf.loadLayersModel('./fold5/model.json');
       }
 
       img = tf.browser.fromPixels(image, 3);
@@ -25,6 +25,7 @@ addEventListener('message', async function (event) {
       output.dispose();
     }
   } catch (err) {
+    console.log(err);
     self.postMessage('failed');
   }
 });
