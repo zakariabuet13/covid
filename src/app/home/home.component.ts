@@ -95,6 +95,7 @@ export class HomeComponent implements OnInit {
       const isValid = this.validateFile(file);
 
       if (isValid) {
+        this.resultImgURL = null;
         this.loadingText = 'Analyzing...';
         this.spinner.show();
         const reader = new FileReader();
