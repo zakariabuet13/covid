@@ -11,7 +11,7 @@ addEventListener('message', async function (event) {
       image = event.data.data;
 
       if (!this.model) {
-        this.model = await tf.loadLayersModel('./fold5/model.json');
+        this.model = await tf.loadLayersModel('./model/model.json');
       }
 
       img = tf.browser.fromPixels(image, 3);
