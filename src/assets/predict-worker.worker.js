@@ -4,7 +4,7 @@ addEventListener('message', async function (event) {
   try {
     if (event.data.data === 'load-model') {
       if (!this.model) {
-        this.model = await tf.loadLayersModel('./trained/model.json');
+        this.model = await tf.loadLayersModel('./model/model.json');
         self.postMessage('model loaded');
       }
     } else {
